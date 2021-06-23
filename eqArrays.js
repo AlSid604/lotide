@@ -21,3 +21,11 @@ const eqArrays = function (array1, array2) {
 };
 
 assertEqual(eqArrays([1, 2, 3], [1, 2, 3]), true); // => should PASS
+
+assertEqual(4/2, 6)
+
+// [1,2,3]
+// [1,1,3]
+
+// {name: "alex", age: 20}
+// {age: 20, name: "alex"}

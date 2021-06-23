@@ -1,5 +1,5 @@
 const eqArrays = function (array1, array2) {
-  if (Array.isArray(array1) && Array.isArray(array2) && array1.length !== array2.length) {
+  if (array1.length !== array2.length) {
     return false;
   }
   for (let i = 0; i < array1.length; i++) {
@@ -10,41 +10,31 @@ const eqArrays = function (array1, array2) {
   return true;
 };
 
-
-const without = function (array1, array2) {
-  let arrayFinal = array1;
-  for (let i = 0; i < array2.length; i++) {
-    for (let x = 0; x < array1.length; x++) {
-      if (array2[i] === arrayFinal[x]) {
-        arrayFinal.splice(x, 1);
+const without = function (source, itemToRemove) {
+  let arrayFinal = [];
+  for (let i = 0; i < source.length; i++) {
+    for (let x = 0; x < itemToRemove.length; x++) {
+      if (source[i] !== itemToRemove[x]) {
+        arrayFinal.push(source[i]);
       }
     }
   }
   return arrayFinal;
 };
 
-const assertArraysEqual = function(array1, array2) {
+const assertArraysEqual = function (array1, array2) {
   if (eqArrays(array1, array2)) {
-    console.log("These arrays have equal values.")
+    console.log("These arrays have equal values.");
   } else {
-    console.log("The values are not equal.")
+    console.log("The values are not equal.");
   }
-}
+};
 
-
-
-assertArraysEqual(without([ '1', '2', '3' ], [ 1, 2, '3' ]), ["1", "2"]);
+assertArraysEqual(without(["1", "2", "3"], [1, 2, "3"]), ["1", "2"]);
 
 assertArraysEqual(without([1, 2, 3], [1]), [2, 3]); // => [2, 3]
 // assertArraysEqual(without(["1", "2", "3"], [1, 2, "3"]), ["1", "2"]); // => ["1", "2"]
 
 const words = ["hello", "world", "lighthouse"];
 
-without(words, ["lighthouse"]); // no need to capture return value for this test case
-// Make sure the original array was not altered by the without function
-assertArraysEqual(words, ["hello", "world", "lighthouse"])
-
-
-
-
-
+assertArraysEqual(without(words, ["lighthouse"]), ["hello", "world"]);

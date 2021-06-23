@@ -18,3 +18,5 @@ const assertArraysEqual = function (array1, array2) {
 };
 
 console.log(assertArraysEqual(eqArrays([1, 2, 3], [1, 2, 3]), true)); // => should PASS
+
+
