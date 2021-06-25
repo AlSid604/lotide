@@ -6,13 +6,6 @@ const assertArraysEqual = function (actual, expected) {
   }
 };
 
-const assertArraysEqual = function (array1, array2) {
-  if (array1 === array2) {
-    return `✅✅✅ Passed, These arrays contain the same values`;
-  }
-  return `🛑🛑🛑 Failed, These arrays did not contain the same values`;
-};
-
 const eqArrays = function (array1, array2) {
   if (array1.length !== array2.length) {
     return false;
@@ -35,4 +28,8 @@ const map = function (array, callback) {
 
 const words = ["ground", "control", "to", "major", "tom"];
 const results1 = map(words, (word) => word[0]);
-console.log(assertArraysEqual(results1, ["g", "c", "t", "m", "t"]));
+const results2 = map(words, (word) => word[1]);
+const results3 = map(words, (word) => word[2]);
+console.log(assertArraysEqual(results1, ["g", "c", "t", "m", "t"])); // true
+console.log(assertArraysEqual(results2, ["r", "o", "o", "a", "o"])); // true
+console.log(assertArraysEqual(results3, ["o", "n", "", "j", "m"])); // false
