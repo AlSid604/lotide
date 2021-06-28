@@ -1,9 +1,9 @@
-const assertEqual = function (actual, expected) {
-  if (actual === expected) {
-    console.log(`✅✅✅Assertion Passed: ${actual} === ${expected}`);
-  } else
-    return console.log(`🛑🛑🛑Assertion Failed: ${actual} !== ${expected}`);
-};
+// const assertEqual = function (actual, expected) {
+//   if (actual === expected) {
+//     console.log(`✅✅✅Assertion Passed: ${actual} === ${expected}`);
+//   } else
+//     return console.log(`🛑🛑🛑Assertion Failed: ${actual} !== ${expected}`);
+// };
 
 // assertEqual("Lighthouse Labs", "Bootcamp");
 // assertEqual(1, 1);
@@ -13,19 +13,19 @@ const eqArrays = function (array1, array2) {
     return false;
   }
   for (let i = 0; i < array1.length; i++) {
-    if (array1[i] !== array2[i]) {
+    if (Array.isArray(array1[i]) && Array.isArray(array2[i])) {
+      if (!eqArrays(array1[i], array2[i])) {
+        return false;
+      }
+    } else if (array1[i] !== array2[i]) {
       return false;
     }
   }
   return true;
 };
 
-assertEqual(eqArrays([1, 2, 3], [1, 2, 3]), true); // => should PASS
+// assertEqual(eqArrays([1, 2, 3], [1, 2, 3]), true); // => should PASS
 
-assertEqual(4/2, 6)
+// assertEqual(4 / 2, 6);
 
-// [1,2,3]
-// [1,1,3]
-
-// {name: "alex", age: 20}
-// {age: 20, name: "alex"}
+module.exports = eqArrays;
